@@ -12,12 +12,10 @@
                     <div class="absolute inset-0 z-10 bg-gradient-to-br from-primary/20 via-transparent to-primary/30">
                     </div>
                     <div class="z-20 text-center text-white">
-                        <h1 class="text-4xl font-bold tracking-tight text-gray-800 dark:text-white">Build Your
-                            Professional
-                            Presence</h1>
-                        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">Join a community of creators and
-                            showcase
-                            your best work to the world.</p>
+                        <h1 class="text-4xl font-bold tracking-tight text-gray-800 dark:text-white">Abadikan. Ciptakan.
+                            Bagikan.</h1>
+                        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">Bergabunglah untuk membuat momen bersama
+                            dan tunjukkan momen itu kepada dunia.</p>
                     </div>
                 </div>
                 <div class="flex w-full flex-col justify-center bg-white p-8 dark:bg-background-dark sm:p-12">
@@ -25,32 +23,30 @@
                         <div class="mb-8">
                             <p
                                 class="text-4xl font-black leading-tight tracking-[-0.033em] text-[#111418] dark:text-white">
-                                Create Your Account</p>
+                                Buat akun anda</p>
                         </div>
-                        <form wire:submit="save" class="flex flex-col gap-2">
-                            <x-label>Username</x-label>
+                        <form wire:submit="save" class="flex flex-col gap-3">
+                            <x-label for="username">Username</x-label>
                             <x-input placeholder="Masukkan username" type="text" name="name"
-                                wire:model="name" />
-                            </label>
+                                wire:model.live="name" id="username" />
 
-                            <x-label>Email</x-label>
-                            <x-input placeholder="Masukkan email" type="email" name="email" wire:model="email" />
-                            </label>
+                            <x-label for="email">Email</x-label>
+                            <x-input placeholder="Masukkan email" type="email" name="email" wire:model.live="email"
+                                id="email" />
 
-                            <x-label>Password</x-label>
-                            <x-input placeholder="Masukkan password" type="password" name="password"
-                                wire:model="password" />
-                            </label>
+                            <x-label for="password">Password</x-label>
+                            <x-input placeholder="Masukkan password" type="{{ $showPassword ? 'text' : 'password' }}"
+                                name="password" wire:model="password" id="password" />
 
-                            <x-label>Konfirmasi Password</x-label>
-                            <x-input placeholder="Masukkan konfirmasi password" type="password"
-                                name="password_confirmation" wire:model="password_confirmation" />
-                            </label>
+                            <x-label for="password_confirmation">Konfirmasi Password</x-label>
+                            <x-input placeholder="Masukkan password" type="{{ $showPassword ? 'text' : 'password' }}"
+                                name="password_confirmation" wire:model="password_confirmation"
+                                id="password_confirmation" />
 
-                           <x-button-auth>Registrasi</x-button-auth>
+                            <x-button-auth>Registrasi</x-button-auth>
                         </form>
                         <div class="mt-6 text-center">
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Already have an account? <a
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Sudah mempunyai akun ? <a
                                     class="font-semibold text-primary hover:underline" href="/login">Log in</a></p>
                         </div>
                     </div>

@@ -14,7 +14,14 @@
 </head>
 
 <body>
-    @if (Route::currentRouteName() !== 'login' && Route::currentRouteName() !== 'register')
+    @php
+        $routeName = Route::currentRouteName();
+        $isAuthPage = in_array($routeName, ['login', 'register', 'forgot-password', 'password.reset']);
+        $isAdminPage = Str::startsWith($routeName, 'admin.');
+    @endphp
+
+
+    @if (!$isAuthPage && !$isAdminPage)
         <div class="bg-background-light dark:bg-background-dark font-display text-[#222222] dark:text-gray-200">
             <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
                 <div class="layout-container flex h-full grow flex-col">

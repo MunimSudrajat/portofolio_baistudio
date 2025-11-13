@@ -14,47 +14,81 @@
                                         <div class="flex flex-col gap-2">
                                             <p
                                                 class="text-4xl font-black text-[#111418] dark:text-white leading-tight tracking-[-0.033em]">
-                                                Access Your Creative Space</p>
-                                            <p class="text-base text-gray-500 dark:text-gray-400">Log in to manage your
-                                                professional portfolio and showcase your work to the world.</p>
+                                                Akses Ruang Fotografi Anda</p>
+                                            <p class="text-base text-gray-500 dark:text-gray-400">Log in Masuk untuk
+                                                memulai mengabadikan momen dengan fotografi profesional dan tunjukkan
+                                                kepada dunia.</p>
                                         </div>
                                         <div class="flex items-center space-x-2">
                                             <span
                                                 class="material-symbols-outlined text-primary text-2xl">verified_user</span>
-                                            <span class="text-sm font-medium text-gray-600 dark:text-gray-300">Secure
-                                                &amp; Professional Platform</span>
+                                            <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
+                                                Platform Aman & Terpercaya untuk Menampilkan Karya Visual</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="flex flex-col justify-center items-center p-8 sm:p-12 md:p-16 w-full">
                                     <div class="w-full max-w-md">
                                         <div class="flex flex-col gap-8">
-                                            <x-alert-success />
+                                            @if (session('message'))
+                                                <x-alert-danger-invalid
+                                                    subMessage="Silahkan cek kembali email atau password anda">{{ session('message') }}</x-alert-danger-invalid>
+                                            @endif
+                                            @if (session('berhasil-register'))
+                                                <x-alert-success
+                                                    subMessage="Silahkan masuk untuk melanjutkan membuat momen mu">{{ session('berhasil-register') }}
+                                                </x-alert-success>
+                                            @endif
                                             <div class="flex flex-col gap-2">
                                                 <p
                                                     class="text-[#111418] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">
-                                                    Welcome Back</p>
-                                                <p class="text-base text-gray-500 dark:text-gray-400">Please enter your
-                                                    details to sign in.</p>
+                                                    Selamat datang</p>
+                                                <p class="text-base text-gray-500 dark:text-gray-400">Silakan masukkan
+                                                    email dan password anda untuk masuk.</p>
                                             </div>
-                                            <div class="flex flex-col gap-4">
-                                                <x-label>Username</x-label>
-                                                <x-input placeholder="Masukkan username" type="text"
-                                                    name="name" wire:model="name" />
-                                                </label>
-                                                <x-label>Password</x-label>
-                                                <x-input placeholder="Masukkan password" type="text"
-                                                    name="password" wire:model="password" />
-                                                </label>
-                                            </div>
-                                            <div class="flex w-full">
-                                                <x-button-auth>Login</x-button-auth>
+                                            <form wire:submit="login">
+                                                <div class="flex flex-col gap-4">
+                                                    <x-label for="email">Email</x-label>
+                                                    <x-input placeholder="Masukkan email" type="email" name="email"
+                                                        wire:model="email" id="email" />
+                                                        <x-label for="password">Password</x-label>
+                                                        <x-input placeholder="Masukkan password"
+                                                        type="{{ $showPassword ? 'text' : 'password' }}"
+                                                        name="password" wire:model="password" id="password" />
+                                                        {{-- <div class="relative w-full gap-4">
+                                                            <button
+                                                                class="absolute inset-y-0 right-0 flex items-center pr-4 text-[#617589] dark:text-gray-400"
+                                                                type="button">
+                                                                @if ($showPassword)
+                                                                    <x-visibilityoff-password wire:model="showPassword"
+                                                                        wire:click="showpassword"></x-visibilityoff-password>
+                                                                @else
+                                                                    <x-visibility-password wire:model="showPassword"
+                                                                        wire:click="showpassword"></x-visibility-password>
+                                                                @endif
+                                                            </button>
+                                                        </div> --}}
+                                                </div>
+                                                <div class="flex w-full mt-5">
+                                                    <x-button-auth>Login</x-button-auth>
+                                                </div>
+                                            </form>
+                                            <div class="flex justify-between items-center w-full">
+                                                <div class="flex items-center gap-2">
+                                                    <input
+                                                        class="form-checkbox h-4 w-4 rounded text-primary border-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:ring-primary dark:focus:ring-offset-background-dark"
+                                                        id="remember-me" type="checkbox" name="remember"
+                                                        wire:model="remember" />
+                                                    <label class="text-sm text-gray-700 dark:text-gray-300 select-none"
+                                                        for="remember-me">Remember Me</label>
+                                                </div>
+                                                <a class="text-primary text-sm font-medium hover:underline"
+                                                    href="{{ route('forgot-password') }}">Lupa Password?</a>
                                             </div>
                                             <div class="text-center">
                                                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                                                    Don't have an account? <a
-                                                        class="font-bold text-primary hover:underline"
-                                                        href="/register">Register</a>
+                                                    Tidak punya akun ? <a class="font-bold text-primary hover:underline"
+                                                        href="{{ route('register') }}">Register</a>
                                                 </p>
                                             </div>
                                         </div>

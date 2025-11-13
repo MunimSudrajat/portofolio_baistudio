@@ -1,5 +1,5 @@
 <div>
-                    <main class="grow">
+                    <main class="grow px-16">
                         <div class="@container py-16 sm:py-24">
                             <div class="flex flex-col gap-10 px-4">
                                 <div class="flex flex-col gap-6 text-center items-center">
