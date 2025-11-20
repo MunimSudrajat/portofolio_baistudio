@@ -1,22 +1,22 @@
 <?php
 
 use App\Livewire\About;
-use App\Livewire\Admin\Aboutme;
 use App\Livewire\Kontak;
 use App\Livewire\Beranda;
 use App\Livewire\Booking;
 use App\Livewire\Service;
-use App\Livewire\Admin\Home;
 use App\Livewire\Auth\Login;
 use App\Livewire\Portofolio;
+use App\Livewire\Admin\Aboutme;
 use App\Livewire\Admin\Gallery;
 use App\Livewire\Auth\Register;
+use App\Livewire\Admin\Category;
+use App\Livewire\Admin\Skills;
 use App\Livewire\Auth\Resetpassword;
 use App\Livewire\Auth\ForgotPassword;
 use Illuminate\Support\Facades\Route;
 
 
-// Route::get('/admin-home', Home::class)->name('admin-home');
 Route::get('/', Beranda::class)->name('beranda');
 
 Route::middleware(['web'])->group(function () {
@@ -37,5 +37,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['role:admin'])->group(function () {
      Route::get('/admin-gallery', Gallery::class)->name('admin.gallery');
      Route::get('/admin-aboutme', Aboutme::class)->name('admin.aboutme');
+     Route::get('/admin-category', Category::class)->name('admin.category');
+     Route::get('/admin-skills', Skills::class)->name('admin.skills');
 });
 

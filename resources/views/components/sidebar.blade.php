@@ -23,6 +23,10 @@
                  {{-- <x-nav-link-sidebar href="{{route('admin.services')}}" wire:navigate routeName="admin-services" icon="photo_camera">Services</x-nav-link-sidebar> --}}
                  <x-nav-link-sidebar href="{{ route('admin.aboutme') }}" wire:navigate routeName="admin.aboutme"
                      icon="person">About Me</x-nav-link-sidebar>
+                 <x-nav-link-sidebar href="{{ route('admin.category') }}" wire:navigate routeName="admin.category"
+                     icon="book">Category</x-nav-link-sidebar>
+                 <x-nav-link-sidebar href="{{ route('admin.skills') }}" wire:navigate routeName="admin.skills"
+                     icon="star">Skills</x-nav-link-sidebar>
                  {{-- <x-nav-link-sidebar href="{{route('admin.contact')}}" wire:navigate routeName="admin-contact" icon="mail">Contact Info</x-nav-link-sidebar> --}}
                  {{-- <x-nav-link-sidebar href="{{route('admin.settings')}}" wire:navigate routeName="admin-settings" icon="settings">Settings</x-nav-link-sidebar> --}}
              </nav>
