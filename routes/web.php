@@ -11,7 +11,8 @@ use App\Livewire\Admin\Aboutme;
 use App\Livewire\Admin\Gallery;
 use App\Livewire\Auth\Register;
 use App\Livewire\Admin\Category;
-use App\Livewire\Admin\Skills;
+use App\Livewire\Admin\EditSkills;
+use App\Livewire\Admin\Skill;
 use App\Livewire\Auth\Resetpassword;
 use App\Livewire\Auth\ForgotPassword;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,7 @@ Route::middleware(['role:admin'])->group(function () {
      Route::get('/admin-gallery', Gallery::class)->name('admin.gallery');
      Route::get('/admin-aboutme', Aboutme::class)->name('admin.aboutme');
      Route::get('/admin-category', Category::class)->name('admin.category');
-     Route::get('/admin-skills', Skills::class)->name('admin.skills');
+     Route::get('/admin-skills', Skill::class)->name('admin.skills');
+     Route::get('/admin-edit-skills/{skills}', EditSkills::class)->name('admin.edit.skills');
 });
 

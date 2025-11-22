@@ -2,13 +2,11 @@
 
 namespace App\Livewire\Auth;
 
-use App\Models\User;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Title;
-use Spatie\Permission\Contracts\Permission;
 
 class Login extends Component
 {

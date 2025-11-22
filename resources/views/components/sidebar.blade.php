@@ -31,12 +31,8 @@
                  {{-- <x-nav-link-sidebar href="{{route('admin.settings')}}" wire:navigate routeName="admin-settings" icon="settings">Settings</x-nav-link-sidebar> --}}
              </nav>
          </div>
-         <div class="flex flex-col">
-             <a class="flex items-center gap-3 px-3 py-2 text-text-light-secondary dark:text-text-dark-secondary hover:bg-hover-light dark:hover:bg-hover-dark rounded-lg"
-                 href="#">
-                 <span class="material-symbols-outlined">logout</span>
-                 <p class="text-sm font-medium leading-normal">Logout</p>
-             </a>
+         <div class="flex justify-center">
+             <livewire:auth.logout />
          </div>
      </div>
  </aside>
