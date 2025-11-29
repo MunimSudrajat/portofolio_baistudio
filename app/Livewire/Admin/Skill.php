@@ -14,16 +14,17 @@ class Skill extends Component
     public function rules()
     {
         return [
-            'skill' => 'required|max:20',
+            'skill' => 'required|max:35|unique:skills,name',
             'deskripsi' => 'required|max:150',
         ];
     }
 
-    public function message()
+    public function messages()
     {
         return [
-            'skills.required' => 'Kolom ini harus di isi',
-            'skills.max' => 'Tidak boleh lebih dari 20 karakter',
+            'skill.required' => 'Kolom ini harus di isi',
+            'skill.unique' => 'Skill sudah ada',
+            'skill.max' => 'Tidak boleh lebih dari 35 karakter',
             'deskripsi.required' => 'Kolom ini harus di isi',
             'deskripsi.max' => 'Tidak boleh lebih dari 150 karakter',
         ];
@@ -36,25 +37,17 @@ class Skill extends Component
             'name' => $this->skill,
             'description' => $this->deskripsi,
         ]);
+        $this->reset(['skill', 'deskripsi']);
 
-        return redirect()->back()->with('message', 'Berhasil menambahkan skills');
+        return redirect()->back()->with('save', 'Success');
     }
 
-    public function update($id)
-    {
-        $data = Skill::findOrFail($id);
-        $this->skill = $data->skill;
-        $this->deskripsi = $data->deskripsi;
-    }
+    public function delete($id){
+        $data = Skills::findOrFail($id);
+        $data->delete();
+        return redirect()->back()->with('delete', 'Success');
 
-    public function updateSkill()
-    {
-        Skill::where('id', $this->skillId)->update([
-            'name' => $this->name,
-            'deskripsi' => $this->deskripsi
-        ]);
 
-        // session()->flash('message', 'Skill berhasil diperbarui!');
     }
 
     public function render()

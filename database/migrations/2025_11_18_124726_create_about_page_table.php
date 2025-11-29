@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('about_page', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('skill_id');
+            $table->uuid('skill_id');
             $table->string('profile_image')->nullable();
             $table->string('title')->default('Tentang Saya');
             $table->text('quote')->nullable();
